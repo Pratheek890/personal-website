@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pratheek | Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:'Inter',sans-serif;color:white;background:#05080f;scroll-behavior:smooth;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;inset:0 0 auto 0;height:72px;
+  display:flex;align-items:center;justify-content:center;
+  z-index:999;padding:0 20px;
+  background:rgba(6,10,14,0.35);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+nav .links{display:flex;gap:18px;}
+nav a{color:#bfc9d6;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:6px;transition:all .25s ease;}
+nav a:hover,nav a.active{color:#9fe8ff;box-shadow:0 6px 20px rgba(0,200,255,0.06);}
+nav .auth{position:absolute;right:20px;}
+nav button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfefff;padding:8px 10px;border-radius:8px;cursor:pointer}
+
+/* HERO */
+.hero{
+  height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;
+}
+.hero .avatar{width:170px;height:170px;border-radius:50%;border:4px solid rgba(159,232,255,0.9);
+  box-shadow:0 20px 60px rgba(0,180,255,0.06);transition:transform .4s ease;}
+.hero .avatar:hover{transform:scale(1.03);}
+.hero h1{font-size:3rem;margin-top:18px;background:linear-gradient(90deg,#9fe8ff,#5fb7ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:#bfc9d6;margin-top:10px;font-size:1.05rem;}
+.hero .cta{margin-top:18px;padding:10px 18px;border-radius:8px;background:#0078b5;color:white;border:none;cursor:pointer}
+
+/* SECTIONS */
+section.pal{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:40px 20px;background:#05080f;
+}
+.card{
+  max-width:900px;width:90%;padding:28px;border-radius:14px;
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+  backdrop-filter:blur(6px);
+}
+.card h2{color:#9fe8ff;font-size:1.9rem;margin-bottom:12px;}
+.card p,.card ul{color:#d1eaf6;line-height:1.6;}
+.list{text-align:left;margin-top:12px;}
+.list li{margin:10px 0;}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:1000;}
+.modal.show{display:flex;}
+.modal .panel{width:360px;max-width:92%;padding:20px;border-radius:12px;
+  background:linear-gradient(180deg,rgba(6,10,14,0.95),rgba(6,10,14,0.92));
+  border:1px solid rgba(255,255,255,0.06);box-shadow:0 20px 80px rgba(2,6,12,0.7);}
+.modal input{width:100%;padding:12px 10px;margin:8px 0;border-radius:8px;
+  border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#e6f6ff;}
+.modal button{padding:10px 12px;border-radius:8px;border:none;cursor:pointer;}
+.btn-primary{background:#00b7ff;color:#021018;font-weight:700;}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfefff;}
+
+/* Responsive */
+@media(max-width:720px){
+  .hero h1{font-size:2rem;}
+  .card{padding:18px;}
+  nav .auth{display:none;}
+}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="links">
+    <a href="#about" class="nav-link active">About</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#research" class="nav-link">Research</a>
+    <a href="#services" class="nav-link" data-protect>Services</a>
+    <a href="#blogs" class="nav-link" data-protect>Blogs</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+  <div class="auth">
+    <button id="openSignup">Sign up</button>
+    <button id="openLogin">Login</button>
+  </div>
+</nav>
+
+<section id="about" class="hero">
+  <img class="avatar" src="https://media.licdn.com/dms/image/v2/D5603AQFBNPrLaZIRLg/profile-displayphoto-scale_400_400/B56ZeTSNdqHEAk-/0/1750522720541?e=1760572800&v=beta&t=JUaWGQZFJdfj6ywHlT3Li71dmGIhfxzHVPIEn-ZPmfQ" alt="Pratheek Patil" />
+  <p>EEE by chance, but programming is my choice  </p>
+  <button class="cta" id="seeProjectsBtn">See projects</button>
+</section>
+
+<section id="projects" class="pal">
+  <div class="card fade-in">
+    <h2>Projects</h2>
+    <p>Selected work across embedded systems, EV dashboards and smart BMS.</p>
+    <ul class="list">
+      <li><a href="https://github.com/Pratheek890/CANSAT-NSAT-MK1" target="_blank">PCB design of Cansat </a></li>
+      <li><a href="https://github.com/Pratheek890/Smart-Battery-management-system-for-Electric-Vehicle-EV-using-IOT" target="_blank">Smart BMS with IoT</a></li>
+      <li><a href="https://github.com/Pratheek890/memberhub" target="_blank">A Web Application for Efficient Membership Management</a></li>
+      <li><a href="https://github.com/Pratheek890/" target="_blank">Adaptive Energy-Efficient Vision System for Electric Vehicles</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="research" class="pal">
+  <div class="card fade-in">
+    <h2>Research</h2>
+    <p>
+      <li>Electrical Power Subsystems, CANSAT</li> 
+      <li>Machine learning for ADAS and energy optimisation.</li> 
+      <li>Smart IOT enabled BMS </li>
+      <li>Adaptive Energy-Efficient Vision System for Electric Vehicles</li>
+    </p>
+  </div>
+</section>
+
+<section id="services" class="pal">
+  <div class="card fade-in" id="servicesCard">
+    <h2>Services</h2>
+    <div class="servicesContent">
+      <p>
+        <li>Full stack web development</li>
+        <li>Machine learning model development</li>
+        <li>Technical content writing</li>
+        <li>UX design</li> 
+        <li>PCB design </li> 
+         <li>Avaniocs bay for satellite </li> 
+        
+
+
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="blogs" class="pal">
+  <div class="card fade-in" id="blogsCard">
+    <h2>Blogs</h2>
+    <div id="blogsContent">
+      <p><em>Login to View </em></p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="pal">
+  <div class="card fade-in">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:pratheekpatil5@gmail.com">pratheekpatil5@gmail.com</a></p>
+    <p>Phone: +91 8904387016</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/pratheekpatil" target="_blank">Pratheek Patil</a></p>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="panel">
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+function isLoggedIn(){return !!localStorage.getItem('auth_user');}
+
+/* Nav links */
+document.querySelectorAll('.nav-link').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=a.getAttribute('href').slice(1);
+    if(a.dataset.protect && !isLoggedIn()){openModal('login',id);return;}
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    setActiveLink(a);
+  });
+});
+function setActiveLink(active){
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l===active));
+}
+
+/* Hero button */
+document.getElementById('seeProjectsBtn').addEventListener('click',()=>{
+  document.querySelector('.nav-link[href="#projects"]').click();
+});
+
+/* Fade-in observer */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting)en.target.classList.add('visible');
+  });
+},{threshold:0.25});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* Scroll active nav */
+window.addEventListener('scroll',()=>{
+  let current='';
+  document.querySelectorAll('section').forEach(sec=>{
+    const top=sec.getBoundingClientRect().top;
+    if(top<=120 && top>-window.innerHeight/2)current=sec.id;
+  });
+  document.querySelectorAll('.nav-link').forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+current));
+});
+
+/* Modal logic */
+const modal=document.getElementById('modal');
+const modalBody=document.getElementById('modalBody');
+document.getElementById('openLogin').addEventListener('click',()=>openModal('login'));
+document.getElementById('openSignup').addEventListener('click',()=>openModal('signup'));
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+
+function openModal(type,returnTo){
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  renderModal(type,returnTo);
+}
+function closeModal(){
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+}
+function renderModal(type,returnTo){
+  if(type==='login'){
+    modalBody.innerHTML=`
+      <h3 style="color:#9fe8ff">Login</h3>
+      <input id="u_name" placeholder="username">
+      <input id="u_pass" type="password" placeholder="password">
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn-primary" id="doLogin">Login</button>
+        <button class="btn-ghost" id="closeBtn">Cancel</button>
+      </div>
+      <p style="margin-top:10px;font-size:0.9rem">No account? <a href="#" id="toSignup">Sign up</a></p>`;
+    document.getElementById('closeBtn').onclick=closeModal;
+    document.getElementById('toSignup').onclick=e=>{e.preventDefault();renderModal('signup',returnTo);}
+    document.getElementById('doLogin').onclick=()=>doLogin(returnTo);
+  } else {
+    modalBody.innerHTML=`
+      <h3 style="color:#9fe8ff">Sign up</h3>
+      <input id="s_name" placeholder="username">
+      <input id="s_pass" type="password" placeholder="password">
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn-primary" id="doSignup">Create</button>
+        <button class="btn-ghost" id="closeBtn2">Cancel</button>
+      </div>
+      <p style="margin-top:10px;font-size:0.9rem">Have an account? <a href="#" id="toLogin">Login</a></p>`;
+    document.getElementById('closeBtn2').onclick=closeModal;
+    document.getElementById('toLogin').onclick=e=>{e.preventDefault();renderModal('login',returnTo);}
+    document.getElementById('doSignup').onclick=doSignup;
+  }
+}
+function doLogin(returnTo){
+  const u=document.getElementById('u_name').value;
+  const p=document.getElementById('u_pass').value;
+  const demoUsers=JSON.parse(localStorage.getItem('demo_users')||'{}');
+  if((u==='Pratheek' && p==='chatgpt5')||(demoUsers[u]&&atob(demoUsers[u])===p)){
+    localStorage.setItem('auth_user',u);
+    afterLogin(returnTo);
+  } else alert('Invalid credentials.');
+}
+function doSignup(){
+  const u=document.getElementById('s_name').value;
+  const p=document.getElementById('s_pass').value;
+  if(!u||!p){alert('Enter username and password');return;}
+  const users=JSON.parse(localStorage.getItem('demo_users')||'{}');
+  if(users[u]){alert('User exists');return;}
+  users[u]=btoa(p);
+  localStorage.setItem('demo_users',JSON.stringify(users));
+  alert('Account created. Please login.');
+  renderModal('login');
+}
+function afterLogin(returnTo){
+  closeModal();
+  document.getElementById('servicesContent').innerHTML=`<ul class="list"><li>Embedded Systems & PCB Design</li><li>Social Media Management</li><li>Technical Content Writing</li><li>Data Analytics</li><li>Frontend Web Design</li><li>Electrical Wiring Design</li></ul>`;
+  document.getElementById('blogsContent').innerHTML=`<p>Read more on <a href="https://medium.com/@pratheekpatil5" target="_blank">Medium</a></p>`;
+  if(returnTo)document.getElementById(returnTo).scrollIntoView({behavior:'smooth'});
+}
+if(isLoggedIn())afterLogin();
+</script>
+</body>
+</html>
